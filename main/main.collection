@@ -3,8 +3,8 @@ instances {
   id: "camera"
   prototype: "/rendercam/camera.go"
   position {
-    x: 640.0
-    y: 360.0
+    x: 256.0
+    y: 144.0
     z: 0.0
   }
   rotation {
@@ -20,6 +20,16 @@ instances {
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
+    properties {
+      id: "useViewArea"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "viewArea"
+      value: "550.0, 300.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
   }
   scale3 {
     x: 1.0
@@ -29,39 +39,14 @@ instances {
 }
 scale_along_z: 0
 embedded_instances {
-  id: "go"
-  data: "embedded_components {\n"
-  "  id: \"logo\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/main/main.atlas\\\"\\n"
-  "default_animation: \\\"logo\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
-  "\"\n"
+  id: "map"
+  data: "components {\n"
+  "  id: \"map\"\n"
+  "  component: \"/main/map.tilemap\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
   "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"background\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/main/main.atlas\\\"\\n"
-  "default_animation: \\\"background\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: -1.0\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"
@@ -72,8 +57,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 640.0
-    y: 360.0
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
