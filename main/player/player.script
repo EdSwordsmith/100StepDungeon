@@ -1,48 +1,30 @@
-local movable = require "main.movable"
+local Movable = require "main.movable"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	self.m = movable.new(0.4)
-	self.dir = vmath.vector3()
+	self.movable = Movable(0.4)
 	self.input = vmath.vector3()
-	self.moveCooldown = 0.4
 end
 
 function update(self, dt)
-	self.moveCooldown = self.moveCooldown - dt
-	
-	if vmath.length_sqr(self.input) > 0 then
-		self.dir = self.input
-		
-		local pos = go.get_position()
-		local to = pos + self.input * 16
-		local result = physics.raycast(pos, to, { hash("default") })
-
-		if result == nil then
-			pos = pos + self.input * 16
-			--go.set_position(pos)
-			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_OUTSINE, 0.4)
-		end
-		
-		self.moveCooldown = 0.4
-		self.input.x = 0
-		self.input.y = 0
-	end
+	self.movable.update(dt)
+	self.movable.move(self.input)
+	self.input.x = 0
+	self.input.y = 0
 end
 
 function on_input(self, action_id, action)
-	if self.moveCooldown < 0 then
-		self.input.x = 0
-		self.input.y = 0
-		if action_id == hash("up") then
-			self.input.y = 1
-		elseif action_id == hash("down") then
-			self.input.y = -1
-		elseif action_id == hash("left") then
-			self.input.x = -1
-		elseif action_id == hash("right") then
-			self.input.x = 1
-		end
+	self.input.x = 0
+	self.input.y = 0
+	
+	if action_id == hash("up") then
+		self.input.y = 1
+	elseif action_id == hash("down") then
+		self.input.y = -1
+	elseif action_id == hash("left") then
+		self.input.x = -1
+	elseif action_id == hash("right") then
+		self.input.x = 1
 	end
 end

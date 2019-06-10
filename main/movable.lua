@@ -1,6 +1,4 @@
-local M = {}
-
-function M.new(cooldown)
+local function Movable(cooldown)
 	local object = {}
 	object.timer = cooldown
 	object.can_move = true
@@ -16,7 +14,7 @@ function M.new(cooldown)
 	end
 
 	object.move = function(dir)
-		if object.can_move then
+		if object.can_move and vmath.length_sqr(dir) > 0 then
 			local pos = go.get_position()
 			local to = pos + dir * 16
 			local ray = physics.raycast(pos, to, { hash("default") })
@@ -32,4 +30,4 @@ function M.new(cooldown)
 	return object
 end
 
-return M
+return Movable
