@@ -17,7 +17,7 @@ instances {
     id: "script"
     properties {
       id: "fixedAspectRatio"
-      value: "false"
+      value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {

@@ -3,7 +3,6 @@ function init(self)
 	
 	self.dir = vmath.vector3()
 	self.input = vmath.vector3()
-	self.oldPos = go.get_position()
 	self.moveCooldown = 0.5
 end
 
@@ -18,10 +17,9 @@ function update(self, dt)
 		local result = physics.raycast(pos, to, { hash("default") })
 
 		if result == nil then
-			self.oldPos = pos
 			pos = pos + self.input * 16
 			--go.set_position(pos)
-			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_LINEAR, 0.5)
+			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_OUTSINE, 0.5)
 		end
 		
 		self.moveCooldown = 0.2
