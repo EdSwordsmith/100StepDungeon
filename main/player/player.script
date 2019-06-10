@@ -3,7 +3,7 @@ function init(self)
 	
 	self.dir = vmath.vector3()
 	self.input = vmath.vector3()
-	self.moveCooldown = 0.5
+	self.moveCooldown = 0.4
 end
 
 function update(self, dt)
@@ -19,10 +19,10 @@ function update(self, dt)
 		if result == nil then
 			pos = pos + self.input * 16
 			--go.set_position(pos)
-			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_OUTSINE, 0.5)
+			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_OUTSINE, 0.4)
 		end
 		
-		self.moveCooldown = 0.2
+		self.moveCooldown = 0.4
 		self.input.x = 0
 		self.input.y = 0
 	end
