@@ -1,5 +1,12 @@
-images {
-  image: "/assets/player.png"
+animations {
+  id: "player_idle"
+  images {
+    image: "/assets/player/player_idle.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
 }
 margin: 0
 extrude_borders: 2
