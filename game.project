@@ -7,7 +7,6 @@ main_collection = /main/main.collectionc
 render = /rendercam/rendercam.renderc
 
 [input]
-game_binding = /input/game.input_bindingc
 use_accelerometer = 0
 
 [display]
@@ -26,7 +25,7 @@ app_icon = /assets/app_icons/appicon.icns
 [android]
 input_method = HiddenInputField
 
-[physics]
-gravity_y = -1000.0
-scale = 0.01
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
 
