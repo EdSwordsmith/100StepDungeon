@@ -1,6 +1,9 @@
+local movable = require "main.movable"
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	
+
+	self.m = movable.new(0.4)
 	self.dir = vmath.vector3()
 	self.input = vmath.vector3()
 	self.moveCooldown = 0.4
