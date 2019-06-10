@@ -3,6 +3,7 @@ function init(self)
 	
 	self.dir = vmath.vector3()
 	self.input = vmath.vector3()
+	self.oldPos = go.get_position()
 	self.moveCooldown = 0.5
 end
 
@@ -13,6 +14,7 @@ function update(self, dt)
 		self.dir = self.input
 		
 		local pos = go.get_position()
+		self.oldPos = pos
 		pos = pos + self.input * 16
 		go.set_position(pos)
 		
@@ -22,8 +24,9 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	if message_id == hash("collision_response") then
+		go.set_position(self.oldPos)
+	end
 end
 
 function on_input(self, action_id, action)
