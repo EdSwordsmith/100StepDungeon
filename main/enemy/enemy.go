@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/main/map/tiles.tilesource\"\n"
+  data: "tile_set: \"/main/levels/tiles.tilesource\"\n"
   "default_animation: \"enemy\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
