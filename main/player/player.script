@@ -29,7 +29,7 @@ function update(self, dt)
 		local to = pos + self.input * 16
 		local res = physics.raycast(pos, to, { hash("default") })
 		if res ~= nil then
-			print(res)
+			pprint(res)
 		end
 	end
 
