@@ -42,9 +42,30 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "orange_button"
+  prototype: "/main/objects/orange_button/orange_button.go"
+  position {
+    x: 56.0
+    y: 40.0
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "map"
+  children: "orange_button"
   data: "components {\n"
   "  id: \"map\"\n"
   "  component: \"/main/map/map.tilemap\"\n"

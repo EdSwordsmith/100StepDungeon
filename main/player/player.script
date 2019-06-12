@@ -1,9 +1,12 @@
-local Movable = require "main.movable"
+local Movable = require "main.modules.movable"
+local Interact = require "main.modules.interact"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	self.movable = Movable(0.4)
+	self.interact = Interact(0.4)
+
 	self.input = vmath.vector3()
 	self.flipped = false
 end
@@ -22,16 +25,10 @@ end
 
 function update(self, dt)
 	self.movable.update(dt)
+	self.interact.update(dt)
 
-	local moved = self.movable.move(self.input)
-	if not moved and vmath.length_sqr(self.input) == 1 then
-		local pos = go.get_position()
-		local to = pos + self.input * 16
-		local res = physics.raycast(pos, to, { hash("default") })
-		if res ~= nil then
-			pprint(res)
-		end
-	end
+	self.movable.move(self.input)
+	self.interact.interact(self.input)
 
 	reset_input(self)
 end

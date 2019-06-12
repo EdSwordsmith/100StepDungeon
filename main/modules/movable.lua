@@ -17,16 +17,14 @@ local function Movable(cooldown)
     if object.can_move and vmath.length_sqr(dir) == 1 then
 			local pos = go.get_position()
 			local to = pos + dir * 16
-			local ray = physics.raycast(pos, to, { hash("default") })
+			local ray = physics.raycast(pos, to, { hash("tiles"), hash("objects") })
 
 			if ray == nil then
 				go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_OUTSINE, cooldown)
 			end
 			object.timer = cooldown
 			object.can_move = false
-			return true
 		end
-		return false
 	end
 
 	return object
