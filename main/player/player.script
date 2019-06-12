@@ -9,6 +9,7 @@ function init(self)
 
 	self.input = vmath.vector3()
 	self.flipped = false
+	print(go.get_id())
 end
 
 local function update_flip(self, flip)

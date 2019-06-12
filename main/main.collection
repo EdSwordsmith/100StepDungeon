@@ -1,74 +1,10 @@
 name: "main"
-instances {
-  id: "camera"
-  prototype: "/rendercam/camera.go"
-  position {
-    x: 128.0
-    y: 72.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "fixedAspectRatio"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "useViewArea"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "viewArea"
-      value: "260.0, 150.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-    properties {
-      id: "expandView"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "orange_button"
-  prototype: "/main/objects/orange_button/orange_button.go"
-  position {
-    x: 56.0
-    y: 40.0
-    z: 0.1
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
 scale_along_z: 0
 embedded_instances {
-  id: "map"
-  children: "orange_button"
+  id: "loader"
   data: "components {\n"
-  "  id: \"map\"\n"
-  "  component: \"/main/map/map.tilemap\"\n"
+  "  id: \"loader\"\n"
+  "  component: \"/main/loader.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -82,18 +18,10 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"/main/map/map.tilemap\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"default\\\"\\n"
-  "mask: \\\"default\\\"\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
+  "  id: \"level_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/level/level.collection\\\"\\n"
+  "exclude: false\\n"
   "\"\n"
   "  position {\n"
   "    x: 0.0\n"
@@ -112,59 +40,6 @@ embedded_instances {
     x: 0.0
     y: 0.0
     z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "player"
-  data: "components {\n"
-  "  id: \"spawn_player\"\n"
-  "  component: \"/main/player/spawn_player.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"factory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/main/player/player.collection\\\"\\n"
-  "load_dynamically: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 88.0
-    y: 40.0
-    z: 1.0
   }
   rotation {
     x: 0.0
