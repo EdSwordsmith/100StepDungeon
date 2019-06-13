@@ -1,0 +1,14 @@
+local Event = require "main.modules.event"
+
+local function handle_event()
+	msg.post("/door" , "toggle")
+end
+
+function init(self)
+	print(msg.url())
+	self.event = Event(handle_event)
+end
+
+function on_message(self, message_id, message, sender)
+	self.event:handle_messages(message_id, message, sender)
+end

@@ -45,6 +45,7 @@ instances {
 instances {
   id: "orange_button"
   prototype: "/main/objects/buttons/orange_button.go"
+  children: "orange_button.event"
   position {
     x: 56.0
     y: 40.0
@@ -207,6 +208,41 @@ embedded_instances {
   "angular_damping: 0.0\\n"
   "locked_rotation: false\\n"
   "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "orange_button.event"
+  data: "components {\n"
+  "  id: \"open_door_event\"\n"
+  "  component: \"/main/objects/buttons/open_door_event.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

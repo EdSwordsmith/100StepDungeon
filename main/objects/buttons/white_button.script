@@ -1,9 +1,9 @@
 local Button = require "main.modules.button"
 
+go.property("event", "/orange_button.event")
+
 function init(self)
-	self.button = Button("bigCubeWhite", function()
-		msg.post("/door" , "toggle")
-	end)
+	self.button = Button("bigCubeWhite", self.event)
 end
 
 function on_message(self, message_id, message, sender)

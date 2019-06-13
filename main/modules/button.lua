@@ -1,7 +1,7 @@
-local function Button(texture, callback)
+local function Button(texture, event)
 	local object = {}
 	object.on = false
-	object.callback = callback
+	object.event = event
 
 	function object:get_animation()
 		local name = texture .. "-"
@@ -17,7 +17,7 @@ local function Button(texture, callback)
 		if message_id == hash("interact") then
 			self.on = not self.on
 			msg.post("#sprite", "play_animation", { id = self:get_animation() })
-			callback()
+			msg.post(event, "handle_event")
 		end
 	end
 
