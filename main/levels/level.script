@@ -1,5 +1,8 @@
+local actions_global = 100
+
 function init(self)
-	self.actions = 100
+	self.actions = actions_global
+	print(msg.url())
 end
 
 function on_message(self, message_id, message, sender)
@@ -10,5 +13,10 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/gui#main_menu", "show_main_menu")
 			msg.post("main:/loader#loader", "unload_level")
 		end
+	elseif message_id == hash("init") then
+		self.actions = message.actions
+	elseif message_id == hash("level_completed") then
+		actions_global = self.actions
+		msg.post("main:/loader#loader", "set_actions", { actions = self.actions})
 	end
 end
