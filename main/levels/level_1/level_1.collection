@@ -44,7 +44,7 @@ instances {
 }
 instances {
   id: "orange_button"
-  prototype: "/main/objects/orange_button/orange_button.go"
+  prototype: "/main/objects/buttons/orange_button.go"
   position {
     x: 56.0
     y: 40.0

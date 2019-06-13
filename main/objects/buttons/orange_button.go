@@ -1,6 +1,6 @@
 components {
-  id: "white_button"
-  component: "/main/objects/white_button/white_button.script"
+  id: "orange_button"
+  component: "/main/objects/buttons/orange_button.script"
   position {
     x: 0.0
     y: 0.0
@@ -17,7 +17,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/main/levels/tiles.tilesource\"\n"
-  "default_animation: \"bigCubeWhite-off\"\n"
+  "default_animation: \"bigCubeOrange-off\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

@@ -23,6 +23,9 @@ function on_message(self, message_id, message, sender)
 		msg.post(proxy, "final")
 		msg.post(proxy, "unload")
 	elseif message_id == hash("proxy_loaded") then
+		if self.current_level == 1 then
+			self.actions = 100
+		end
 		local level_url = "level_" .. self.current_level .. ":/level#level"
 		msg.post(level_url, "init", { actions = self.actions})		
 		msg.post(sender, "init")

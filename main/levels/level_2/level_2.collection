@@ -44,7 +44,7 @@ instances {
 }
 instances {
   id: "orange_button"
-  prototype: "/main/objects/orange_button/orange_button.go"
+  prototype: "/main/objects/buttons/orange_button.go"
   position {
     x: 88.0
     y: 104.0
@@ -124,7 +124,7 @@ instances {
 }
 instances {
   id: "green_button"
-  prototype: "/main/objects/green_button/green_button.go"
+  prototype: "/main/objects/buttons/green_button.go"
   position {
     x: 264.0
     y: 104.0
@@ -144,7 +144,7 @@ instances {
 }
 instances {
   id: "white_button"
-  prototype: "/main/objects/white_button/white_button.go"
+  prototype: "/main/objects/buttons/white_button.go"
   position {
     x: 168.0
     y: 40.0

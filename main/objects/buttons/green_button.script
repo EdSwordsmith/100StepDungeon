@@ -1,0 +1,11 @@
+local Button = require "main.modules.button"
+
+function init(self)
+	self.button = Button("bigCubeGreen", function()
+		msg.post("/door" , "toggle")
+	end)
+end
+
+function on_message(self, message_id, message, sender)
+	self.button:handle_messages(message_id, message, sender)
+end

@@ -15,6 +15,7 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("init") then
 		self.actions = message.actions
+		msg.post("#level_gui", "update_actions", {actions = self.actions})
 	elseif message_id == hash("level_completed") then
 		actions_global = self.actions
 		msg.post("main:/loader#loader", "set_actions", { actions = self.actions})
