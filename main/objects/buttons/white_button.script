@@ -1,6 +1,6 @@
 local Button = require "main.modules.button"
 
-go.property("event", "/orange_button.event")
+go.property("event", hash("/white_button.event"))
 
 function init(self)
 	self.button = Button("bigCubeWhite", self.event)

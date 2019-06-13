@@ -145,6 +145,7 @@ instances {
 instances {
   id: "white_button"
   prototype: "/main/objects/buttons/white_button.go"
+  children: "open"
   position {
     x: 168.0
     y: 40.0
@@ -260,6 +261,26 @@ embedded_instances {
   "  }\n"
   "}\n"
   ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "open"
+  data: ""
   position {
     x: 0.0
     y: 0.0
