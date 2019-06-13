@@ -1,0 +1,23 @@
+function init(self)
+	self.open = false
+end
+
+local function get_animation(self)
+	local name = "door-"
+	if self.open then
+		name = name .. "open"
+	else
+		name = name .. "close"
+	end
+	return hash(name)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("toggle") then
+		self.open = not self.open
+		msg.post("#sprite", "play_animation", { id = get_animation(self) })
+	elseif message_id == hash("interact") and self.open then
+		msg.post("/enemy" , "die")
+		msg.post("/level#level_gui", "level_completed")
+	end
+end

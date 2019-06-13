@@ -11,12 +11,12 @@ animations {
   start_tile: 1
   end_tile: 4
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 5
+  fps: 4
   flip_horizontal: 0
   flip_vertical: 0
 }
 animations {
-  id: "walk"
+  id: "move"
   start_tile: 7
   end_tile: 10
   playback: PLAYBACK_LOOP_FORWARD

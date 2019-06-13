@@ -1,0 +1,6 @@
+[*]
+indent_style = space
+indent_size = 2
+
+[*.{lua,script,gui_script,render_script}]
+indent_style = tab

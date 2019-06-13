@@ -1,0 +1,41 @@
+local Movable = require "main.modules.movable"
+local Attack = require "main.modules.attack"
+
+function init(self)
+	self.movable = Movable(0.8)
+	self.weapon = Attack(0.4)
+	self.dir = vmath.vector3()
+	self.dead = false
+end
+
+function update(self, dt)
+	if self.dead then
+		return nil
+	end
+	
+	self.movable.update(dt)
+	self.weapon.update(dt)
+
+	local player_pos = go.get_position(hash("/collection0/player"))
+	local pos = go.get_position()
+	local delta = player_pos - pos
+
+	if math.abs(delta.x) >= math.abs(delta.y) then
+		self.dir.x = delta.x / math.abs(delta.x)
+		self.dir.y = 0
+	else
+		self.dir.y = delta.y / math.abs(delta.y)
+		self.dir.x = 0
+	end
+
+
+	if not self.weapon.attack(self.dir) then
+		self.movable.move(self.dir, { hash("tiles"), hash("objects"), hash("player"), hash("enemy") })
+	end
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("die") then
+		self.dead = true
+	end
+end

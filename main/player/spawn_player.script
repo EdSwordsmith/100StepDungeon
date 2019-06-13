@@ -1,0 +1,3 @@
+function init(self)
+	collectionfactory.create("#factory")
+end

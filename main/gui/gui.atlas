@@ -1,0 +1,43 @@
+animations {
+  id: "bigButton"
+  images {
+    image: "/assets/gui/bigButton.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "redButton"
+  images {
+    image: "/assets/gui/redButton.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "brickButton"
+  images {
+    image: "/assets/gui/brickButton.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "background"
+  images {
+    image: "/assets/gui/background.jpg"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0

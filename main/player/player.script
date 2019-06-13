@@ -1,30 +1,61 @@
-local Movable = require "main.movable"
+local Movable = require "main.modules.movable"
+local Interact = require "main.modules.interact"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	self.movable = Movable(0.4)
+	self.interact = Interact(0.4)
+
 	self.input = vmath.vector3()
+	self.flipped = false
+	print(go.get_id())
+end
+
+local function update_flip(self, flip)
+	if self.flipped ~= flip then
+		self.flipped = flip
+		sprite.set_hflip("#sprite", flip)
+	end
+end
+
+local function reset_input(self)
+	self.input.x = 0
+	self.input.y = 0
 end
 
 function update(self, dt)
 	self.movable.update(dt)
-	self.movable.move(self.input)
-	self.input.x = 0
-	self.input.y = 0
+	self.interact.update(dt)
+
+	if self.movable.move(self.input) then
+		msg.post("/level", "action_use", { amount = 1 })
+	end
+	if self.interact.interact(self.input) then
+		msg.post("/level", "action_use", { amount = 1 })
+	end
+
+	reset_input(self)
 end
 
 function on_input(self, action_id, action)
-	self.input.x = 0
-	self.input.y = 0
-	
+	reset_input(self)
+
 	if action_id == hash("up") then
 		self.input.y = 1
 	elseif action_id == hash("down") then
 		self.input.y = -1
 	elseif action_id == hash("left") then
 		self.input.x = -1
+		update_flip(self, false)
 	elseif action_id == hash("right") then
 		self.input.x = 1
+		update_flip(self, true)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("attack") then
+		
 	end
 end

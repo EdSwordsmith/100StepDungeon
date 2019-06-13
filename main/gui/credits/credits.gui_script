@@ -1,0 +1,25 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#", "hide_credits")
+	self.active = false
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show_credits") then
+		msg.post("#", "enable")
+		self.active = true
+	elseif message_id == hash("hide_credits") then
+		msg.post("#", "disable")
+		self.active = false
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("click") and action.pressed and self.active then
+		local back_node = gui.get_node("back")
+		if gui.pick_node(back_node, action.x, action.y) then
+			msg.post("#", "hide_credits")
+			msg.post("#main_menu", "show_main_menu")
+		end
+	end
+end
