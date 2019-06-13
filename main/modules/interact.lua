@@ -19,13 +19,13 @@ local function Interact(cooldown)
 			local to = pos + dir * 16
 			local ray = physics.raycast(pos, to, { hash("objects") })
 
-			if ray ~= nil then
-				msg.post(ray.id, "interact")
-			end
-
 			object.timer = cooldown
 			object.can_interact = false
-			return true
+
+			if ray ~= nil then
+				msg.post(ray.id, "interact")
+				return true
+			end
 		end
 		return false
 	end

@@ -1,16 +1,5 @@
-local function load_proxy(self, proxy)
-	if self.proxy ~= nil then
-		msg.post(current_proxy, "unload")
-	end
-
-	msg.post(proxy, "load")
-	msg.post(proxy, "enable")
-	self.proxy = proxy
-end
-
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	--load_proxy(self, "#proxy_level_1")
 	self.current_level = 0
 end
 

@@ -1,0 +1,51 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#", "hide_how_to_play")
+	self.active = false
+	self.doorOpen = false
+	self.lightOn = false
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show_how_to_play") then
+		msg.post("#", "enable")
+		self.active = true
+	elseif message_id == hash("hide_how_to_play") then
+		msg.post("#", "disable")
+		self.active = false
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("click") and action.pressed and self.active then
+		local back_node = gui.get_node("back")
+		if gui.pick_node(back_node, action.x, action.y) then
+			msg.post("#", "hide_how_to_play")
+			msg.post("#main_menu", "show_main_menu")
+		end
+
+		local door_node = gui.get_node("door")
+		if gui.pick_node(door_node, action.x, action.y) then
+			local door_texture_node = gui.get_node("door_texture")
+			if self.doorOpen then
+				gui.play_flipbook(door_texture_node, "door-close")
+				self.doorOpen = false
+			else
+				gui.play_flipbook(door_texture_node, "door-open")
+				self.doorOpen = true
+			end
+		end
+
+		local light_node = gui.get_node("light")
+		if gui.pick_node(light_node, action.x, action.y) then
+			local light_texture_node = gui.get_node("light_texture")
+			if self.lightOn then
+				gui.play_flipbook(light_texture_node, "bigCubeOrange-off")
+				self.lightOn = false
+			else
+				gui.play_flipbook(light_texture_node, "bigCubeOrange-on")
+				self.lightOn = true
+			end
+		end
+	end
+end

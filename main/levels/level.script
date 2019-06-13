@@ -1,0 +1,14 @@
+function init(self)
+	self.actions = 100
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("action_use") then
+		self.actions = self.actions - message.amount;
+		msg.post("#level_gui", "update_actions", {actions = self.actions})
+		if self.actions <= 0 then
+			msg.post("main:/gui#main_menu", "show_main_menu")
+			msg.post("main:/loader#loader", "unload_level")
+		end
+	end
+end
