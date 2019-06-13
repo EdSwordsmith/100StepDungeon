@@ -1,10 +1,10 @@
-name: "level_1"
+name: "level_2"
 instances {
   id: "camera"
   prototype: "/rendercam/camera.go"
   position {
-    x: 128.0
-    y: 72.0
+    x: 152.0
+    y: 104.0
     z: 0.0
   }
   rotation {
@@ -27,7 +27,7 @@ instances {
     }
     properties {
       id: "viewArea"
-      value: "260.0, 150.0, 0.0"
+      value: "310.0, 200.0, 0.0"
       type: PROPERTY_TYPE_VECTOR3
     }
     properties {
@@ -45,10 +45,10 @@ instances {
 instances {
   id: "orange_button"
   prototype: "/main/objects/buttons/orange_button.go"
-  children: "orange_button.event"
+  children: "orange"
   position {
-    x: 56.0
-    y: 40.0
+    x: 88.0
+    y: 104.0
     z: 0.1
   }
   rotation {
@@ -56,6 +56,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "orange_button"
+    properties {
+      id: "event"
+      value: "/orange"
+      type: PROPERTY_TYPE_HASH
+    }
   }
   scale3 {
     x: 1.0
@@ -67,8 +75,8 @@ instances {
   id: "enemy"
   prototype: "/main/enemy/enemy.go"
   position {
-    x: 184.0
-    y: 72.0
+    x: 40.0
+    y: 104.0
     z: 1.0
   }
   rotation {
@@ -85,7 +93,7 @@ instances {
 }
 instances {
   id: "level"
-  prototype: "/main/levels/level.go"
+  prototype: "/main/levels/level_final.go"
   position {
     x: 0.0
     y: 0.0
@@ -107,9 +115,79 @@ instances {
   id: "door"
   prototype: "/main/objects/door/door.go"
   position {
-    x: 120.0
-    y: 120.0
+    x: 216.0
+    y: 168.0
     z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "green_button"
+  prototype: "/main/objects/buttons/green_button.go"
+  children: "green"
+  position {
+    x: 264.0
+    y: 104.0
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "green_button"
+    properties {
+      id: "event"
+      value: "/green"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "white_button"
+  prototype: "/main/objects/buttons/white_button.go"
+  children: "white_button.event"
+  position {
+    x: 168.0
+    y: 40.0
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "enemy1"
+  prototype: "/main/enemy/enemy.go"
+  position {
+    x: 136.0
+    y: 152.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -181,7 +259,7 @@ embedded_instances {
   id: "map"
   data: "components {\n"
   "  id: \"map\"\n"
-  "  component: \"/main/levels/level_1/level_1.tilemap\"\n"
+  "  component: \"/main/levels/level_2/level_2.tilemap\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -197,7 +275,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"/main/levels/level_1/level_1.tilemap\\\"\\n"
+  "  data: \"collision_shape: \\\"/main/levels/level_2/level_2.tilemap\\\"\\n"
   "type: COLLISION_OBJECT_TYPE_KINEMATIC\\n"
   "mass: 0.0\\n"
   "friction: 0.1\\n"
@@ -239,7 +317,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "orange_button.event"
+  id: "white_button.event"
   data: "components {\n"
   "  id: \"open_door_event\"\n"
   "  component: \"/main/objects/buttons/open_door.script\"\n"
@@ -253,6 +331,81 @@ embedded_instances {
   "    y: 0.0\n"
   "    z: 0.0\n"
   "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "green"
+  data: "components {\n"
+  "  id: \"kill_enemy\"\n"
+  "  component: \"/main/objects/buttons/kill_enemy.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "orange"
+  data: "components {\n"
+  "  id: \"kill_enemy\"\n"
+  "  component: \"/main/objects/buttons/kill_enemy.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"enemy\"\n"
+  "    value: \"/enemy1\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
   "}\n"
   ""

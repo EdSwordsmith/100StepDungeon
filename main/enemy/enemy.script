@@ -20,7 +20,7 @@ function update(self, dt)
 	local pos = go.get_position()
 	local delta = player_pos - pos
 
-	if math.abs(delta.x) >= math.abs(delta.y) then
+	if math.abs(delta.x) > math.abs(delta.y) then
 		self.dir.x = delta.x / math.abs(delta.x)
 		self.dir.y = 0
 	else
@@ -28,6 +28,19 @@ function update(self, dt)
 		self.dir.x = 0
 	end
 
+	local pos = go.get_position()
+	local to = pos + self.dir * 16
+	local ray = physics.raycast(pos, to, { hash("tiles"), hash("objects"), hash("enemy") })
+
+	if ray ~= nil then
+		if math.abs(self.dir.x) > math.abs(self.dir.y) then
+			self.dir.y = math.random(-1,1)
+			self.dir.x = 0
+		else
+			self.dir.x = math.random(-1, 1)
+			self.dir.y = 0
+		end
+	end
 
 	if not self.weapon.attack(self.dir) then
 		self.movable.move(self.dir, { hash("tiles"), hash("objects"), hash("player"), hash("enemy") })

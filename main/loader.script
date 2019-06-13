@@ -1,6 +1,8 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.current_level = 0
+	self.max_level = 2
+	self.actions = 100
 end
 
 function on_message(self, message_id, message, sender)
@@ -10,14 +12,25 @@ function on_message(self, message_id, message, sender)
 		msg.post(proxy, "load")
 	elseif message_id == hash("next_level") then
 		msg.post("#", "unload_level")
-		msg.post("#", "load_level", { level = self.current_level + 1 })
+		if self.current_level + 1 > self.max_level then 
+			msg.post("main:/gui#main_menu", "show_main_menu")
+		else 
+			msg.post("#", "load_level", { level = self.current_level + 1 })
+		end
 	elseif message_id == hash("unload_level") then
 		local proxy = "#proxy_level_" .. self.current_level
 		msg.post(proxy, "disable")
 		msg.post(proxy, "final")
 		msg.post(proxy, "unload")
 	elseif message_id == hash("proxy_loaded") then
+		if self.current_level == 1 then
+			self.actions = 100
+		end
+		local level_url = "level_" .. self.current_level .. ":/level#level"
+		msg.post(level_url, "init", { actions = self.actions})		
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
+	elseif message_id == hash("set_actions") then
+		self.actions = message.actions
 	end
 end

@@ -18,6 +18,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("#sprite", "play_animation", { id = get_animation(self) })
 	elseif message_id == hash("interact") and self.open then
 		msg.post("/enemy" , "die")
-		msg.post("/level#level_gui", "level_completed")
+		msg.post("/enemy1" , "die")
+		msg.post("/level", "level_completed")
 	end
 end

@@ -1,6 +1,6 @@
 components {
   id: "orange_button"
-  component: "/main/objects/orange_button/orange_button.script"
+  component: "/main/objects/buttons/orange_button.script"
   position {
     x: 0.0
     y: 0.0
