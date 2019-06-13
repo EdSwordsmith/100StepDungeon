@@ -242,7 +242,7 @@ embedded_instances {
   id: "orange_button.event"
   data: "components {\n"
   "  id: \"open_door_event\"\n"
-  "  component: \"/main/objects/buttons/open_door_event.script\"\n"
+  "  component: \"/main/objects/buttons/open_door.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
