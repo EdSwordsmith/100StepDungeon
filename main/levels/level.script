@@ -2,7 +2,6 @@ local actions_global = 100
 
 function init(self)
 	self.actions = actions_global
-	print(msg.url())
 end
 
 function on_message(self, message_id, message, sender)

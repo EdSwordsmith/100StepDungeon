@@ -127,7 +127,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
@@ -149,8 +149,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 160.0
-    y: 85.0
+    x: 510.0
+    y: 95.0
     z: 0.0
     w: 1.0
   }
@@ -199,12 +199,12 @@ nodes {
   }
   scale {
     x: 1.5
-    y: 0.8
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 128.0
+    x: 384.0
     y: 128.0
     z: 0.0
     w: 1.0
@@ -217,7 +217,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/brickButton"
+  texture: "gui/bigButton"
   id: "main_menu_btn_texture"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
