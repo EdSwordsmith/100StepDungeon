@@ -5,7 +5,6 @@ local function handle_event()
 end
 
 function init(self)
-	print(msg.url())
 	self.event = Event(handle_event)
 end
 
