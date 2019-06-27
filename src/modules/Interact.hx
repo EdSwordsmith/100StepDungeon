@@ -9,7 +9,7 @@ import defold.Vmath;
 import defold.types.Vector3;
 
 class Interact extends TimedAction {
-    public static var INTERACT(default, never) = new Message("interact");
+    public static var INTERACT(default, never) = new Message<Void>("interact");
 
     public function interact(dir:Vector3): Bool {
         if (canAct && Vmath.length_sqr(dir) == 1) {
