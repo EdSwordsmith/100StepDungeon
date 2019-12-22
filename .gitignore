@@ -1,13 +1,16 @@
-/.internal
-/build
+.internal/
+build/
 .externalToolBuilders
 .DS_Store
 Thumbs.db
 .lock-wscript
 *.pyc
-.project
-.cproject
-builtins
+.project/
+.cproject/
+builtins/
 
 .idea/
 bundles/
+
+.import/
+.mono/
